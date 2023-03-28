@@ -1,0 +1,915 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+				<link type="text/css" rel="stylesheet" href="styles/reset.css"
+			media="all" />
+			<link type="text/css" rel="stylesheet" href="styles/view.css"
+			media="all" />
+			<link type="text/css" rel="stylesheet" href="styles/print.css"
+			media="print" />
+							<script type="text/javascript" src="js/jquery.js"></script>
+				<script type="text/javascript" src="js/fusioncharts.js"></script>
+				<script type="text/javascript" src="js/fusioncharts.charts.js"></script>
+				<script type="text/javascript" src="js/fusioncharts.theme.fusion.js"></script>
+				<style type="text/css">
+							@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-Regular.ttf');
+						font-weight: 400;
+						font-style: normal;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-Italic.ttf');
+						font-weight: 400;
+						font-style: italic;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-Medium.ttf');
+						font-weight: 500;
+						font-style: normal;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-MediumItalic.ttf');
+						font-weight: 500;
+						font-style: italic;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-SemiBold.ttf');
+						font-weight: 600;
+						font-style: normal;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-SemiBoldItalic.ttf');
+						font-weight: 600;
+						font-style: italic;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-Bold.ttf');
+						font-weight: 700;
+						font-style: normal;
+					}
+									@font-face {
+						font-family: 'Barlow';
+						src: url('font/Barlow-BoldItalic.ttf');
+						font-weight: 700;
+						font-style: italic;
+					}
+					</style>
+</head>
+<body style="min-width: 960px">
+<div id="content">
+<div id="header">
+<img class="logo" src="data:image/png;base64,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" alt="TestRail QA" /><h1>Runs (Summary) 1/19/2023</h1>
+<p class="comment bottom">Project: Testowanie e-commerce<br />By Jakub Wiewióra, 1/19/2023 7:34 PM</p>
+</div>
+
+<h1 class="main">
+	<span class="title">
+		Run: Ósmy test run			</span>
+</h1>
+
+
+
+																																				
+	
+<div class="chart-wrapper-outter">
+	<div class="chart-wrapper-inner">
+		<div class="chartContainer" style="height: 230px; width: fit-content; margin-bottom: 1em; display: block;">
+			<div class="chartColumn">
+				<div id="statusChart" style="height: 230px; width: 250px">
+									</div>
+			</div>
+						<div class="chartColumn" style="width: 350px">
+				<div style="chartColumnInner">
+					
+
+
+	<div style="padding-top: 1.5em">
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #3cb850"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">10 Passed</div>
+				<div class="description">100% set to Passed</div>
+			</div>
+		</div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #595959"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">0 Blocked</div>
+				<div class="description">0% set to Blocked</div>
+			</div>
+		</div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #fcc200"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">0 Retest</div>
+				<div class="description">0% set to Retest</div>
+			</div>
+		</div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #e40046"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">0 Failed</div>
+				<div class="description">0% set to Failed</div>
+			</div>
+		</div>
+	</div>				</div>
+			</div>
+			<div class="chartColumn" style="width: 120px">
+				<div class="percentContainer">
+		<div class="percent" style="padding-top: 4em">
+		<div class="title">100%</div>
+		<div class="description">passed</div>
+	</div>
+			<div class="percentNote secondary" style="line-height: 130%">
+			0 / 10 untested (0%).		</div>
+	</div>			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var chart_status;
+
+$(function() {
+	$(document).ready(function() {
+		chart_status = new FusionCharts({
+			type: 'pie2d',
+			renderAt: 'statusChart',
+			width: '100%',
+			height: '100%',
+			dataSource: {
+				chart: {
+					theme: 'fusion',
+					baseFont: 'Barlow',
+					baseFontSize: '14',
+					baseFontColor: '#4D4D4D',
+					showLabels: false,
+					showLegend: false,
+					showValues: false,
+					plotToolText: '<strong>$label</strong> <br />$value ($percentValue)',
+					animation: false,
+					enableSlicing: false
+				},
+				data: [{"label":"Passed","color":"3cb850","value":10},{"label":"Blocked","color":"595959","value":0},{"label":"Untested","color":"979797","value":0},{"label":"Retest","color":"fcc200","value":0},{"label":"Failed","color":"e40046","value":0}]			}
+		}).render();
+	});
+});
+</script>
+
+		<div style="margin: 1.5em 0">
+	<table class="grid">
+	<colgroup>
+		<col></col>
+		<col class="comment"></col>
+	</colgroup>
+			<tr class="even">
+		<td>Created On</td>
+		<td class="right">
+			1/19/2023		</td>
+	</tr>
+		<tr class="odd">
+		<td>Completed</td>
+				<td class="right">No</td>
+			</tr>
+	</table>	</div>
+
+
+	<h1><img class="right noPrint w16" src="images/report-assets/help.svg" alt="" title="Shows the activity (test results and comments) for the selected test runs." />Activity</h1>
+			
+
+
+
+<div class="chartContainer" style="height: 230px; width: 925px; margin-bottom: 1em;">
+	<div class="chartColumn" style="margin-right: 25px">
+		<div id="activityChart" style="height: 230px; width: 600px; overflow: hidden">
+                    </div>
+	</div>
+	<div class="chartColumn" style="width: 300px">
+		<div style="display: block; margin: 0 auto; padding: 0 2em">
+		
+
+	<div class="legendHeader">
+1/16/2023 &ndash; 1/19/2023:</div>
+<div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #3cb850"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">10 Passed</div>
+				<div class="description">100% set to Passed</div>
+			</div>
+		</div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #595959"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">0 Blocked</div>
+				<div class="description">0% set to Blocked</div>
+			</div>
+		</div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #fcc200"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">0 Retest</div>
+				<div class="description">0% set to Retest</div>
+			</div>
+		</div>
+							<div class="legendEntry" style="height: auto">
+			<div class="icon">
+				<div style="width: 100%; background: #e40046"></div>
+			</div>
+			<div style="margin-left: 35px">
+				<div class="title">0 Failed</div>
+				<div class="description">0% set to Failed</div>
+			</div>
+		</div>
+	</div>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+</div>
+
+
+<script type="text/javascript">
+var chart_activity;
+
+$(function () {
+	$(document).ready(function() {
+		chart_activity = new FusionCharts({
+			type: 'msline',
+			renderAt: 'activityChart',
+			width: '100%',
+			height: '100%',
+			dataSource: {
+				chart: {
+					caption: '',
+					theme: 'fusion',
+					baseFont: 'Barlow',
+					baseFontSize: '14',
+					baseFontColor: '#4D4D4D',
+					maxBarHeight: '10',
+					showLegend: '0',
+					anchorRadius: 0,
+					showHoverEffect: 0,
+					anchorHoverEffect: 1,
+					plotHoverEffect: 1,
+					drawAnchors: 1,
+					chartBottomMargin: '0',
+					plotToolText:`<strong>$seriesname</strong> <br /> $label: $value`,
+					plotcolorintooltip: '0',
+					drawCrossLine: '0'
+				},
+				categories: [{
+					category: [{"label":"1\/16"},{"label":"1\/17"},{"label":"1\/18"},{"label":"1\/19"}],
+				}],
+				dataset: [{"seriesname":"Passed","color":"3cb850","data":[{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":10,"anchorRadius":3,"anchorAlpha":0,"anchorHoverAlpha":100}]},{"seriesname":"Blocked","color":"595959","data":[{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0}]},{"seriesname":"Retest","color":"fcc200","data":[{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0}]},{"seriesname":"Failed","color":"e40046","data":[{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0},{"value":0,"anchorRadius":0}]}]			}
+		}).render();
+	});
+});
+</script>
+				
+																																																													
+	<div class="dateSection" style="margin-top: 1em">
+		<span class="title">Thursday, January 19, 2023</span>
+	</div>
+		<table class="grid">
+		<colgroup>
+			<col style="width: 90px"></col>
+			<col></col>
+			<col class="comment"></col>
+		</colgroup>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/115/#testChange-510">Wysyłanie wiadomości bez zakupu (Sandra N)</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/114/#testChange-501">Wysłanie wiadomości z zakupioną ofertą (Nina)</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/113/#testChange-492">Dodanie dowolnego przedmiotu ze strony kategorii, a następnie update ilości [Adam]</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/112/#testChange-472">Dodanie dowolnego przedmiotu ze strony kategorii i przejście flow zakupowego [Adam C]</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/111/#testChange-465">Zakup przedmiotu prosto ze strony głównej Andrzej Kliś</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/110/#testChange-457">Wyświetlenie karuzeli na stronie głównej (Paulina Myśków)</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/109/#testChange-451">kupno produktu ze strony głównej (Urszula Malec)</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/108/#testChange-427">Zmiana języka strony - cezary</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/107/#testChange-413">Logowanie na istniejącego użytkownika - Jakub T</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/106/#testChange-397">Rejestracja-nowy użytkownik (Nina)</a>
+														</td>
+				<td class="right">
+					<span class="secondary">Tested by Jakub W.</span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/115/#testChange-82">Wysyłanie wiadomości bez zakupu (Sandra N)</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/114/#testChange-81">Wysłanie wiadomości z zakupioną ofertą (Nina)</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/113/#testChange-80">Dodanie dowolnego przedmiotu ze strony kategorii, a następnie update ilości [Adam]</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/112/#testChange-79">Dodanie dowolnego przedmiotu ze strony kategorii i przejście flow zakupowego [Adam C]</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/111/#testChange-78">Zakup przedmiotu prosto ze strony głównej Andrzej Kliś</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/110/#testChange-77">Wyświetlenie karuzeli na stronie głównej (Paulina Myśków)</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/109/#testChange-76">kupno produktu ze strony głównej (Urszula Malec)</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/108/#testChange-75">Zmiana języka strony - cezary</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="odd">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/107/#testChange-74">Logowanie na istniejącego użytkownika - Jakub T</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+																				<tr class="even">
+				<td class="box">
+																								<span class="statusBox" style="background: #737373; color: #ffffff">Untested</span>
+															</td>
+				<td>
+											<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/106/#testChange-73">Rejestracja-nowy użytkownik (Nina)</a>
+														</td>
+				<td class="right">
+					<span class="secondary"></span>
+				</td>
+			</tr>
+			</table>
+		
+			
+	<h1><img class="right noPrint w16" src="images/report-assets/help.svg" alt="" title="Shows the progress (forecasts and estimates) and burndown chart for the selected test runs." />Progress</h1>
+			
+
+
+<div class="chartContainer" style="height: 230px; width: 925px; margin-bottom: 1em">
+    <div class="chartColumn" style="margin-right: 50px">
+        <div id="burndownChart" style="height: 230px; width: 650px; overflow: hidden">
+                    </div>
+    </div>
+    <div class="chartColumn" style="width: 225px">
+        <div class="legendHeader">
+Since 1/19/2023:</div>
+<div>
+	<div class="legendEntry" style="height: auto">
+		<div class="icon">
+			<div style="width: 100%; background: #1B55D3"></div>
+		</div>
+		<div style="margin-left: 35px">
+			<div class="title">Remaining Tests</div>
+													<div class="description">100% of tests completed.</div>
+		</div>
+	</div>
+	<div class="legendEntry" style="height: auto">
+		<div class="icon">
+			<div style="width: 100%; background: #E40046"></div>
+		</div>
+		<div style="margin-left: 35px">
+			<div class="title">Remaining Effort</div>
+											<div class="description">100% of effort completed.</div>
+					</div>
+	</div>
+	<div class="legendEntry" style="height: auto">
+		<div class="icon">
+			<div style="width: 100%; background: #D0D0D0"></div>
+		</div>
+		<div style="margin-left: 35px">
+			<div class="title">Ideal Progress</div>
+											<div class="description">-0 days to go (forecast).</div>
+					</div>
+	</div>
+</div>    </div>
+    <div style="clear: both"></div>
+</div>
+
+<script type="text/javascript">
+var chart_burndown;
+$(function () {
+	$(document).ready(function() {
+		chart_burndown = new FusionCharts({
+			type: 'mscombidy2d',
+			renderAt: 'burndownChart',
+			width: '100%',
+			height: '100%',
+			dataSource: {
+				chart: {
+					showLegend: '0',
+					theme: "fusion",
+					drawAnchors: "0",
+					baseFont: 'Barlow',
+					baseFontSize: '14',
+					baseFontColor: '#4D4D4D',
+					chartBottomMargin: '0'
+				},
+				categories: [{
+					category: [{"label":"Start"},{"label":"1\/19"}]				}],
+				dataset: [{"seriesname":"Tests","renderAs":"line","color":"#1B55D3","data":[{"value":10},{"value":5}]},{"seriesname":"Forecasts","renderAs":"line","color":"#E3505B","data":[{"value":1},{"value":0}],"parentYAxis":"S"}],
+				trendlines: [{
+					line: [{
+						parentYAxis: "S",
+						startvalue: 1,
+						endValue: 0,
+						color: '#D0D0D0',
+						thickness: 2,
+						alpha: 100
+					}]
+				}]
+			}
+		}).render();
+	});
+});
+</script>
+		<h2 class="top">Forecasts &amp; Estimates</h2>
+	<div class="statsContainer statsContainerHighlighted">
+	<div style="clear: both"></div>
+	<div class="statsIcon" style="float: left">
+		<img src="images/report-assets/goal.svg" height="32" width="32" alt="" />
+	</div>
+	<div class="statsRight" style="width: 225px">
+					<span class="estimate">1/19/2023</span><br />
+						<span class="secondary"><em>Low accuracy forecast</em></span>
+						</div>
+	<div class="statsContent" style="max-width: 450px; margin-right: 240px">
+		<p style="margin: 0">Based on the current activity and forecasts, the projected completion date for the test run(s) is:</p>
+	</div>
+	<div style="clear: both"></div>
+</div>
+
+<div style="clear: both"></div>
+
+<div class="statsContainer">
+	<div style="clear: both"></div>
+	<div class="statsIcon">
+		<img src="images/report-assets/time.svg" height="32" width="32" alt="" />
+	</div>
+	<div class="statsRight" style="width: 225px">
+									<p style="margin: 0">Completed:			100%
+			(10/10)<br />
+					Elapsed:				0h 0m<br />
+				Tests / day: 10<br />
+		Hours / day:					0				</p>
+	</div>
+	<div class="statsContent" style="max-width: 450px; margin-right: 240px">
+				
+		<p style="margin: 0">The test run(s) were started <strong class="text-softer">4 hours ago</strong> (1/19/2023).</p>
+			</div>
+	<div style="clear: both"></div>
+</div>
+
+<div style="clear: both"></div>
+
+<div class="statsContainer print-break">
+	<div style="clear: both"></div>
+	<div class="statsIcon">
+		<img src="images/report-assets/stats.svg" height="32" width="32" alt="" />
+	</div>
+	<div class="statsContent">
+		<table class="grid">
+			<colgroup>
+				<col style="width: 33%"></col>
+				<col style="width: 33%"></col>
+				<col style="width: 33%"></col>
+			</colgroup>			
+			<tr class="header noBorder" style="background: #E0E0E0">
+				<th>Metric</th>
+				<th>By Estimate</th>
+				<th>By Forecast</th>
+			</tr>
+			<tr class="noBorder">
+				<td>Completed</td>
+				<td>0h 0m</td>
+				<td>
+									0h 35m								</td>
+			</tr>
+			<tr class="noBorder">
+								<td>Todo</td>
+								<td>0h 0m</td>
+				<td>
+									0h 0m								</td>				
+			</tr>
+			<tr class="noBorder">
+				<td>Total</td>
+				<td>0h 0m<td>
+									0h 35m								</td>
+			</tr>
+		</table>
+	</div>
+	<div style="clear: both"></div>
+</div>
+			
+
+			<h1><img class="right noPrint w16" src="images/report-assets/help.svg" alt="" title="Shows the tests and their current statuses for the selected test runs." />Tests &amp; Results</h1>
+														
+		<h3><span class="chapter">1.</span>
+	Rejestracja	<span class="secondary">(1)</span>
+	</h3>
+							<div class="markdown" style="margin-bottom: 1.5em">
+							<p>Tutaj pojawią się testy związane z rejestracja</p>
+					</div>
+						<table class="grid">
+	<colgroup>
+					<col style="width: 75px"></col>
+					<col></col>
+		<col style="width: 125px"></col>	</colgroup>
+	<tr class="header">
+					<th class="w30 id">ID</th>
+				<th class="w30 title">Title</th>
+	<th class="status">Status</th>
+	</tr>
+											<tr class="odd">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/106">T106</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/106">Rejestracja-nowy użytkownik (Nina)</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+			</table>					<h3><span class="chapter">2.</span>
+	Logowanie	<span class="secondary">(1)</span>
+	</h3>
+				<table class="grid">
+	<colgroup>
+					<col style="width: 75px"></col>
+					<col></col>
+		<col style="width: 125px"></col>	</colgroup>
+	<tr class="header">
+					<th class="w30 id">ID</th>
+				<th class="w30 title">Title</th>
+	<th class="status">Status</th>
+	</tr>
+											<tr class="odd">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/107">T107</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/107">Logowanie na istniejącego użytkownika - Jakub T</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+			</table>					<h3><span class="chapter">3.</span>
+	strona główna	<span class="secondary">(4)</span>
+	</h3>
+				<table class="grid">
+	<colgroup>
+					<col style="width: 75px"></col>
+					<col></col>
+		<col style="width: 125px"></col>	</colgroup>
+	<tr class="header">
+					<th class="w30 id">ID</th>
+				<th class="w30 title">Title</th>
+	<th class="status">Status</th>
+	</tr>
+											<tr class="odd">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/108">T108</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/108">Zmiana języka strony - cezary</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+													<tr class="even">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/109">T109</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/109">kupno produktu ze strony głównej (Urszula Malec)</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+													<tr class="odd">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/110">T110</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/110">Wyświetlenie karuzeli na stronie głównej (Paulina Myśków)</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+													<tr class="even">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/111">T111</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/111">Zakup przedmiotu prosto ze strony głównej Andrzej Kliś</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+			</table>					<h3><span class="chapter">4.</span>
+	koszyk	<span class="secondary">(2)</span>
+	</h3>
+				<table class="grid">
+	<colgroup>
+					<col style="width: 75px"></col>
+					<col></col>
+		<col style="width: 125px"></col>	</colgroup>
+	<tr class="header">
+					<th class="w30 id">ID</th>
+				<th class="w30 title">Title</th>
+	<th class="status">Status</th>
+	</tr>
+											<tr class="odd">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/112">T112</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/112">Dodanie dowolnego przedmiotu ze strony kategorii i przejście flow zakupowego [Adam C]</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+													<tr class="even">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/113">T113</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/113">Dodanie dowolnego przedmiotu ze strony kategorii, a następnie update ilości [Adam]</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+			</table>					<h3><span class="chapter">5.</span>
+	Wysyłanie wiadomości	<span class="secondary">(2)</span>
+	</h3>
+				<table class="grid">
+	<colgroup>
+					<col style="width: 75px"></col>
+					<col></col>
+		<col style="width: 125px"></col>	</colgroup>
+	<tr class="header">
+					<th class="w30 id">ID</th>
+				<th class="w30 title">Title</th>
+	<th class="status">Status</th>
+	</tr>
+											<tr class="odd">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/114">T114</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/114">Wysłanie wiadomości z zakupioną ofertą (Nina)</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+													<tr class="even">
+								<td class="id">
+							<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/115">T115</a>
+					</td>
+					<td>
+					<a target="_top" href="https://testujeaplikacje.testrail.io/index.php?/tests/view/115">Wysyłanie wiadomości bez zakupu (Sandra N)</a>
+				</td>
+		<td><span class="statusBox" style="background: #338a41; color: #ffffff">Passed</span></td>
+			</tr>
+			</table>									
+																
+<div id="footer">
+	<p class="comment bottom">Generated with TestRail <a target="_top" href="http://www.gurock.com/testrail/">test management</a> software &ndash; 7.5.6.3001<br />
+		Report: Runs (Summary), by Gurock Software (Version 1)</p>
+</div>
+
+<!--
+{
+	"runs_suites_include":"1",
+	"runs_suites_ids":null,
+	"runs_filters":null,
+	"runs_include":"3",
+	"runs_ids":[8],
+	"runs_sections_include":"1",
+	"runs_sections_ids":null,
+	"runs_limit":25,
+	"activities_daterange":"5",
+	"activities_daterange_from":null,
+	"activities_daterange_to":null,
+	"activities_statuses_include":"1",
+	"activities_statuses_ids":null,
+	"activities_limit":100,
+	"tests_filters":null,
+	"tests_columns":{
+	"tests:id":75,
+	"cases:title":0
+},
+	"tests_limit":100,
+	"content_hide_links":false,
+	"status_include":true,
+	"activities_include":true,
+	"progress_include":true,
+	"tests_include":true
+}-->
+<!--
+{
+	"name":"Runs (Summary) %date%",
+	"description":null,
+	"access":"2",
+	"schedule_now":true,
+	"schedule_on_demand_via_api":false,
+	"schedule_later":false,
+	"schedule_interval":"1",
+	"schedule_weekday":1,
+	"schedule_day":1,
+	"schedule_hour":8,
+	"schedule_until":null,
+	"notify_user":false,
+	"notify_link":false,
+	"notify_link_recipients":null,
+	"notify_attachment":false,
+	"notify_attachment_recipients":"person1@example.com\r\nperson2@example.com",
+	"notify_attachment_html_format":false,
+	"notify_attachment_pdf_format":false
+}-->
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	if (parent && parent.showReport)
+	{
+		parent.showReport();
+	}
+});
+</script>
+<script type="text/javascript">
+    var _0x172b=['915521FAOgwP','1WUUTor','85768HrInlH','1VBoajH','701113SlGqlh','596675VFZSmj','430136IMhboy','iyE4qlbA7A3C4A2F1D1I1B1A2A3B1B3fqyH2B7C-16xvhyA2E1lduC7E2B4E2F2G2C1B10B2D1E6C1E1E3E1G2c1D-16yC2A3E2yD1J2B3lozD1B1G4da1wB9B6C6dG-10A-8D3J2A9B1A8C7E1E5A2A1A1sB-22uE2D6G1F1H-8H-7lB8A5C7epG4d1I3B8lnE-13F4E2D3F1H4A10D9C1B5E6B1F4E3E1g==','9197lCfGYC','713897AESQnW','1QhbbSq','license','33GAfgRX'];var _0x3f57b9=_0x10c9;function _0x10c9(_0x3cfbbf,_0x10e5b7){_0x3cfbbf=_0x3cfbbf-0x73;var _0x172b34=_0x172b[_0x3cfbbf];return _0x172b34;}(function(_0x22f311,_0x1ab4f2){var _0x50a77f=_0x10c9;while(!![]){try{var _0x461480=parseInt(_0x50a77f(0x7b))+-parseInt(_0x50a77f(0x75))*-parseInt(_0x50a77f(0x7e))+parseInt(_0x50a77f(0x7c))+parseInt(_0x50a77f(0x78))+parseInt(_0x50a77f(0x7f))*parseInt(_0x50a77f(0x79))+parseInt(_0x50a77f(0x7a))*-parseInt(_0x50a77f(0x77))+-parseInt(_0x50a77f(0x76))*parseInt(_0x50a77f(0x73));if(_0x461480===_0x1ab4f2)break;else _0x22f311['push'](_0x22f311['shift']());}catch(_0x19bcfb){_0x22f311['push'](_0x22f311['shift']());}}}(_0x172b,0x7d53f),FusionCharts['options'][_0x3f57b9(0x74)]({'key':_0x3f57b9(0x7d),'creditLabel':![]}));</script>
+</body>
+</html>

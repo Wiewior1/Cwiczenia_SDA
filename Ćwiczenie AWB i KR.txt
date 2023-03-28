@@ -1,0 +1,64 @@
+Treść zadania: 
+
+Proszę wyznaczyć wszystkie przypadki testowe wg. techniki projektowania testów: analiza wartości brzegowych oraz klas równoważności. 
+
+Internetowy sklep z klockami lego: [lata liczone zgodnie z datą urodzenia]
+1) 0 - 3 roku zycia sa sprzedawane tylko klocki duplo
+2) 4 - 12 roku zycia sa sprzedawane tylko klocki lego junior
+3) 13- 18 roku zycia może kupić tylko klocki lego classic
+4) >= 19 lat moze kupic tylko lego technic
+
+Założenia globalne: 0-120 lat, rrrr
+
+Przypadek 1: 0-3
+Analiza warónków brzegowych:
+AWB+: [0;2022,3;2019] 
+AWB-: [4;2018]
+Klasa równoważności:
+KR+: [1;2021-2;2020]
+KR-: [5;2017-120;1902]
+Przypadki do testowania:
+PT1: [0,3]
+PT2: [4]
+PT3: [2]
+PT4: [5-120]
+
+Przypadek 2: 4-12
+AWB+: [4;2018,12;2010]
+AWB1-: [3;2019]
+AWB2-: [13;2009]
+KR+: [5;2017-11;2011]
+KR1-: [0;2022-2;2020]
+KR2-: [14;2008-120;1902]
+Przypadki do testowania:
+PT1: [4,12]
+PT2: [3]
+PT3: [13]
+PT4: [5-11]
+PT5: [0-2]
+PT6: [14-120]
+
+Przypadek 3: 13-18
+AWB+: [13;2009,18;2004]
+AWB1-: [12;2010]
+AWB2-; [19;2003]
+KR+: [14;2008-17;2005]
+KR1-: [0;2022-12;2010]
+KR2-: [20;2002-120;1902
+Przypadki testowe:
+PT1: [13,18]
+PT2: [0,12]
+PT3: [19]
+PT4: [14-17]
+PT5: [0-12]
+PT6: [20-120]
+
+Przypadek 4: >=19
+AWB+: [19;2003]
+AWB1-: [18;2004]
+KR+: [20;2002-120;1902]
+KR-: [0;2022-17;2005]
+PT1: [19]
+PT2: [18]
+PT3: [20-120]
+PT4: [0-17]
